@@ -1,0 +1,65 @@
+apply plugin: 'scala'
+
+def scalaVersion = '2.9.2'
+
+// Add Maven Central to the repositories
+repositories { 
+	mavenCentral()
+}
+
+// Make sure that scalac is used to compile everything
+// in a mixed project.  Otherwise, you have to figure
+// out which gets compiled first, Java or Scala. 
+sourceSets { 
+	main {
+		scala { 
+			srcDirs = ['src/main/java', 'src/main/scala']
+		}
+	}
+	test { 
+		scala {
+			srcDirs = ['src/test/java', 'src/test/scala']
+		}
+	}
+}
+
+// Set up dependencies
+dependencies { 
+	scalaTools "org.scala-lang:scala-compiler:${scalaVersion}"
+	scalaTools "org.scala-lang:scala-library:${scalaVersion}"
+
+	compile "org.scala-lang:scala-library:${scalaVersion}"
+	compile "com.google.guava:guava:11.0.2"
+
+	testCompile "org.scalatest:scalatest_${scalaVersion}:1.+"
+	testCompile "org.scalacheck:scalacheck_${scalaVersion}:1.9"
+	// testCompile "junit:junit:4.10"
+}
+
+task wrapper (type: Wrapper) { 
+	gradleVersion = '1.0-rc-3'
+}
+
+/**
+ * For ScalaTest, Gradle can either use the JUnitRunner
+ * or the <scalatest> ant task.  Use this to define 
+ * the ant task
+ */
+test {
+	ant.taskdef(name: 'scalatest', 
+		classname: 'org.scalatest.tools.ScalaTestAntTask', 
+		classpath: classpath.asPath)
+}
+
+/**
+ * Then use this to run the scalatest ant task.  Look to 
+ * http://scalatest.org/user_guide/using_the_scalatest_ant_task
+ * for documentation
+ */
+test << {
+	ant.scalatest(runpath: sourceSets.test.output.asPath, 
+		haltonfailure: 'true', 
+		fork: 'false') {
+		reporter(type: 'stderr')
+	}
+}

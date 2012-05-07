@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2010 Google Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+  Original slides: Marcin Wichary (mwichary@google.com)
+  Modifications: Ernest Delgado (ernestd@google.com)
+                 Alex Russell (slightlyoff@chromium.org)
+
+  landslide modifications: Adam Zapletal (adamzap@gmail.com)
+                           Nicolas Perriault (nperriault@gmail.com)
+-->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ScalaTest</title>
+    <!-- Styles -->
+    
+    <link rel="stylesheet" media="print" href="file:///Users/bcarlson/Projects/jaxjug/scalatest/presentation/jugtheme/css/print.css">
+    <link rel="stylesheet" media="screen, projection" href="file:///Users/bcarlson/Projects/jaxjug/scalatest/presentation/jugtheme/css/screen.css">
+    
+    
+    <!-- /Styles -->
+    <!-- Javascripts -->
+    
+    <script type="text/javascript" src="file:///Users/bcarlson/Projects/jaxjug/scalatest/presentation/jugtheme/js/slides.js"></script>
+    
+    
+    <!-- /Javascripts -->
+</head>
+<body>
+  <div id="blank"></div>
+  <div class="presentation">
+    <div id="current_presenter_notes">
+      <div id="presenter_note"></div>
+    </div>
+    <div class="slides">
+      
+      <!-- slide source: scalatest.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>ScalaTest</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="scalatest.md">scalatest.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              1/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: scalatest.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Who is this guy?</h1></header>
+            
+            
+            <section><h2>Bill Carlson</h2>
+<ul>
+<li>Senior Software Engineer at <a href="http://www.bridgegateintl.com">BridgeGate International</a></li>
+<li>Professional Software Engineer for ~20 years</li>
+<li>Amateur Geek for much longer than that</li>
+<li>Worked in C / Python / C++ / Perl / Ada</li>
+<li>Started working in Java in 1999</li>
+<li>Discovered Scala in 2011</li>
+<li>Oh, yeah... also father, husband, and marathoner<ul>
+<li><small>Ask me about Jeff Galloway Training Programs!</small></li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="scalatest.md">scalatest.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              2/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: scalatest.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>What is ScalaTest?</h1></header>
+            
+            
+            <section><p><em>ScalaTest is an open-source test framework for the Java Platform designed to increase your productivity by letting you write fewer lines of test code and more clearly reveal your intent.</em></p>
+<p>-- From <a href="http://www.scalatest.org">http://www.scalatest.org</a></p>
+<h2>What does that mean?</h2></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="scalatest.md">scalatest.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              3/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: scalatest.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>What does ScalaTest get me?</h1></header>
+            
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="scalatest.md">scalatest.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              4/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: scalatest.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Scala!</h1></header>
+            
+            
+            <section><ul>
+<li>Not going to go over all the benefits of Scala</li>
+<li>Need to go over some things</li>
+<li>Basic Syntax<ul>
+<li>Hello JaxJug</li>
+<li>val/var/def</li>
+<li>no semicolons</li>
+</ul>
+</li>
+<li>Function Literals<ul>
+<li>passing functions</li>
+</ul>
+</li>
+<li>Classes and Traits<ul>
+<li>multiple inheritance</li>
+<li>traits have implementation</li>
+</ul>
+</li>
+<li>Java Interop</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="scalatest.md">scalatest.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              5/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: scalatest.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Flexibility</h1></header>
+            
+            
+            <section><ul>
+<li>TDD<ul>
+<li>Suite</li>
+<li>FunSuite</li>
+</ul>
+</li>
+<li>BDD<ul>
+<li>FunSpec</li>
+<li>FeatureSpec</li>
+<li>WordSpec</li>
+<li>FreeSpec</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="scalatest.md">scalatest.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              6/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: scalatest.md -->
+      <div class="slide-wrapper">
+        <div class="slide">
+          <div class="inner">
+            
+            <header><h1>Additional Traits</h1></header>
+            
+            
+            <section><ul>
+<li>Matchers<ul>
+<li>ShouldMatchers</li>
+<li>MustMatchers</li>
+</ul>
+</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="scalatest.md">scalatest.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              7/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: scalatest.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>ScalaTest for TDD</h1></header>
+            
+            
+            <section><p>Using Suite: </p>
+<div class="highlight"><pre><span class="k">import</span> <span class="nn">org.scalatest._</span>
+
+<span class="k">class</span> <span class="nc">SimpleSuite</span> <span class="k">extends</span> <span class="nc">Suite</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">testSimpleEquality</span> <span class="k">=</span> <span class="n">assert</span><span class="o">(</span><span class="mi">3</span> <span class="o">===</span> <span class="mi">3</span><span class="o">)</span> 
+<span class="o">}</span>
+</pre></div>
+
+<p>Output (sbt):</p>
+<pre><code>[info] SimpleSuite:
+[info] - testSimpleEquality
+</code></pre>
+<p>That's great, but how is it better than JUnit? </p>
+<ul>
+<li>Quite a bit, actually!</li>
+</ul></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="scalatest.md">scalatest.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              8/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+      <!-- slide source: scalatest.md -->
+      <div class="slide-wrapper">
+        <div class="slide has_code">
+          <div class="inner">
+            
+            <header><h1>ScalaTest for TDD</h1></header>
+            
+            
+            <section><p>Using FunSuite: </p>
+<div class="highlight"><pre><span class="k">import</span> <span class="nn">org.scalatest._</span>
+
+<span class="k">class</span> <span class="nc">SimpleFunSuite</span> <span class="k">extends</span> <span class="nc">FunSuite</span> <span class="o">{</span>
+  <span class="n">test</span><span class="o">(</span><span class="s">&quot;Simple equality should pass with the same value&quot;</span><span class="o">)</span> <span class="o">{</span> 
+    <span class="n">assert</span><span class="o">(</span><span class="mi">3</span> <span class="o">===</span> <span class="mi">3</span><span class="o">)</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>Output</p>
+<pre><code>[info] SimpleFunSuite:
+[info] - Simple equality should pass with the same value
+</code></pre></section>
+            
+          </div>
+          <div class="presenter_notes">
+            <header><h1>Presenter Notes</h1></header>
+            <section>
+            
+            </section>
+          </div>
+          <footer>
+            
+            <aside class="source">
+              Source: <a href="scalatest.md">scalatest.md</a>
+            </aside>
+            
+            <aside class="page_number">
+              9/9
+            </aside>
+          </footer>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div id="toc" class="sidebar hidden">
+    <h2>Table of Contents</h2>
+    <table>
+      <caption>Table of Contents</caption>
+      
+      <tr id="toc-row-1">
+        <th><a href="#slide1">ScalaTest</a></th>
+        <td><a href="#slide1">1</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-2">
+        <th><a href="#slide2">Who is this guy?</a></th>
+        <td><a href="#slide2">2</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-3">
+        <th><a href="#slide3">What is ScalaTest?</a></th>
+        <td><a href="#slide3">3</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-4">
+        <th><a href="#slide4">What does ScalaTest get me?</a></th>
+        <td><a href="#slide4">4</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-5">
+        <th><a href="#slide5">Scala!</a></th>
+        <td><a href="#slide5">5</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-6">
+        <th><a href="#slide6">Flexibility</a></th>
+        <td><a href="#slide6">6</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-7">
+        <th><a href="#slide7">Additional Traits</a></th>
+        <td><a href="#slide7">7</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-8">
+        <th><a href="#slide8">ScalaTest for TDD</a></th>
+        <td><a href="#slide8">8</a></td>
+      </tr>
+      
+      
+      <tr id="toc-row-9">
+        <th><a href="#slide9">ScalaTest for TDD</a></th>
+        <td><a href="#slide9">9</a></td>
+      </tr>
+      
+      
+    </table>
+  </div>
+  
+  <div id="help" class="sidebar hidden">
+    <h2>Help</h2>
+    <table>
+      <caption>Help</caption>
+      <tr>
+        <th>Table of Contents</th>
+        <td>t</td>
+      </tr>
+      <tr>
+        <th>Exposé</th>
+        <td>ESC</td>
+      </tr>
+      <tr>
+        <th>Full screen slides</th>
+        <td>e</td>
+      </tr>
+      <tr>
+        <th>Presenter View</th>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>Source Files</th>
+        <td>s</td>
+      </tr>
+      <tr>
+        <th>Slide Numbers</th>
+        <td>n</td>
+      </tr>
+      <tr>
+        <th>Toggle screen blanking</th>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>Show/hide slide context</th>
+        <td>c</td>
+      </tr>
+      <tr>
+        <th>Notes</th>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>Help</th>
+        <td>h</td>
+      </tr>
+    </table>
+  </div>
+  <script>main()</script>
+</body>
+</html>
