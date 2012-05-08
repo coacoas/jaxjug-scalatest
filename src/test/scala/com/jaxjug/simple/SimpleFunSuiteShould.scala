@@ -6,12 +6,12 @@ import org.scalatest.FunSuite
 
 
 class SimpleFunSuiteShould extends FunSuite with ShouldMatchers { 
-	ignore("Simple equality should pass with the same value") { 
+	test("Simple equality should pass with the same value") { 
 		3 should equal (3)
 		true should be (true)
 	}
 
-	ignore("Lots of testers for strings") { 
+	test("Lots of testers for strings") { 
 		"" should be ('empty)
 		"scalatest" should startWith ("scala")
 		"jaxjug" should include ("ax")
@@ -19,11 +19,11 @@ class SimpleFunSuiteShould extends FunSuite with ShouldMatchers {
 		"scala test" should fullyMatch regex ("scala\\s\\w+")
 	}
 
-	ignore("get() on an empty array list should produce IndexOutOfBoundsException") {
+	test("get() on an empty array list should produce IndexOutOfBoundsException") {
 		evaluating { new ArrayList().get(2) } should produce[IndexOutOfBoundsException]
 	}
 
-	ignore("Hardcoded strings are referentially equal") { 
+	test("Hardcoded strings are referentially equal") { 
 		val s = "test string"
 		s should be theSameInstanceAs ("test string")
 	}

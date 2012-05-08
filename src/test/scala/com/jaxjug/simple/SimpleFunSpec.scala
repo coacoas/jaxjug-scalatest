@@ -1,27 +1,22 @@
 package com.jaxjug.simple
 
-import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.path.FreeSpec
-import org.scalatest.GivenWhenThen
-import org.scalatest.prop.PropertyChecks
+import org.scalatest._
+import org.scalatest.matchers._
 
-class SimpleFunSpec extends FreeSpec with ShouldMatchers with PropertyChecks {
-  "A string" - {
-    val s = "a string"
-    "when surrounded by any number of spaces" - {
-      val spaced = (" " * 6) + s + (" " * 13)
-      "should be at least as long as the original" in {
-        info ("long")
-        spaced.length should be >= s.length
-      }
-      
-      "and trimmed" - {
-        info("trim")
-        val trimmed = (spaced).trim()
-        "results in the original string" in {
-          trimmed should be(s)
-        }
-      }
-    }
-  }
+class SimpleFunSpec extends FunSpec with ShouldMatchers { 
+	describe ("An empty string") {
+		val s = ""
+		it("should have length 0") { 
+			s.length should equal (0)
+		}
+		it("should throw IndexOutOfBounds attempting to read any character") {
+			evaluating {s.charAt(2)} should produce[IndexOutOfBoundsException]
+		}
+	}
+	describe ("A one-character string") {
+	 	val s = "a"
+	 	it ("should have length 1") {
+	 		s.length should be (1) 
+	 	}
+	}
 }

@@ -1,10 +1,11 @@
 package com.jaxjug
 
 import org.junit._
+import org.junit.Assert._
 
 class JUnitTest { 
   @Test
   def testSimpleEquality() {
-  	Assert.assertEquals(3, 3)
+  	assertEquals(3, 3)
   }
 }

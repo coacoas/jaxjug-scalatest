@@ -33,7 +33,7 @@ dependencies {
 
 	testCompile "org.scalatest:scalatest_${scalaVersion}:1.+"
 	testCompile "org.scalacheck:scalacheck_${scalaVersion}:1.9"
-	// testCompile "junit:junit:4.10"
+	testCompile "junit:junit:4.10"
 }
 
 task wrapper (type: Wrapper) { 
