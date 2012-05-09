@@ -16,7 +16,7 @@ class SimpleFunSuiteShould extends FunSuite with ShouldMatchers {
 		"scalatest" should startWith ("scala")
 		"jaxjug" should include ("ax")
 		"scalatest" should include regex ("""t.st""")
-		"scala test" should fullyMatch regex ("scala\\s\\w+")
+		"scala test" should fullyMatch regex ("""scala\s\w+""")
 	}
 
 	test("get() on an empty array list should produce IndexOutOfBoundsException") {

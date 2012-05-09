@@ -18,5 +18,11 @@ class SimpleFunSpec extends FunSpec with ShouldMatchers {
 	 	it ("should have length 1") {
 	 		s.length should be (1) 
 	 	}
+	 	it("should return the right value if I get the first character") { 
+ 			s.charAt(0) should be ('a')
+	 	}
+	 	it("should throw an exception when character > 1 attempted to access") { 
+	 		evaluating { s.charAt(1) } should produce[IndexOutOfBoundsException]
+	 	}
 	}
 }
